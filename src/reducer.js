@@ -7,7 +7,7 @@ const reducer = (state,action) =>{
         case 'REMOVE':
             return {
                 ...state,
-                cart:state.cart.filter((cartItem) => cartItem !== action.payload)
+                cart: state.cart.filter((cartItem) => cartItem.id !== action.payload)
             }
         case 'INCREASE':{
             let tempCart = state.cart.map((cartItem) => {
@@ -50,7 +50,7 @@ const reducer = (state,action) =>{
 
             return {...state,total,amount}
         case "TOGGLE_AMOUNT":
-            tempCart=state.cart
+            let tempCart=state.cart
                 .map((cartItem) => {
                     if (cartItem.id === action.payload.id){
                         if (action.payload.type === 'inc'){
@@ -75,3 +75,4 @@ const reducer = (state,action) =>{
     }
 
 }
+export default reducer
